@@ -3,6 +3,6 @@
   "assertionSchema": "dataform_assertions",
   "warehouse": "bigquery",
   "defaultDatabase": "kyr-sandbox-test-abo",
-  "defaultLocation": "EU"
+  "defaultLocation": "europe-west1"
 }
     
