@@ -1,0 +1,133 @@
+config {
+  type: "table",
+  schema: "dataform_staging",
+  name: "1_Delete column_msa_ts.sqlx"
+}
+
+SELECT 
+  'msa' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(msa IS NULL) as missing_rows, 
+  ROUND(COUNTIF(msa IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.MST_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'month' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(month IS NULL) as missing_rows, 
+  ROUND(COUNTIF(month IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.MST_TABLE)}
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'hpi_value' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(hpi_value IS NULL) as missing_rows, 
+  ROUND(COUNTIF(hpi_value IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.MST_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'hpi_yoy_pct_chg' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(hpi_yoy_pct_chg IS NULL) as missing_rows, 
+  ROUND(COUNTIF(hpi_yoy_pct_chg IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.MST_TABLE)}
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'hpi_distance' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(hpi_distance IS NULL) as missing_rows, 
+  ROUND(COUNTIF(hpi_distance IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.MST_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'hpi_returns' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(hpi_returns IS NULL) as missing_rows, 
+  ROUND(COUNTIF(hpi_returns IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.MST_TABLE)}  
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT
+   'hpi_real' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(hpi_real IS NULL) AS missing_rows,
+   ROUND(COUNTIF(hpi_real IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.MST_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'hpi_trend' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(hpi_trend IS NULL) AS missing_rows,
+   ROUND(COUNTIF(hpi_trend IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.MST_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'afford_detrended' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(afford_detrended IS NULL) AS missing_rows,
+   ROUND(COUNTIF(afford_detrended IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.MST_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'afford_pmt' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(afford_pmt IS NULL) AS missing_rows,
+   ROUND(COUNTIF(afford_pmt IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.MST_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'acceleration_value' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(acceleration_value IS NULL) AS missing_rows,
+   ROUND(COUNTIF(acceleration_value IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.MST_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'velocity_value' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(velocity_value IS NULL) AS missing_rows,
+   ROUND(COUNTIF(velocity_value IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.MST_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'risk' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(risk IS NULL) AS missing_rows,
+   ROUND(COUNTIF(risk IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.MST_TABLE)}
+HAVING missing_percentage >25

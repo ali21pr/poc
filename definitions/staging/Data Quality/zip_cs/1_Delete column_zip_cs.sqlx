@@ -1,0 +1,164 @@
+config {
+  type: "table",
+  schema: "dataform_staging",
+  name: "1_Delete column_zip_cs.sqlx"
+}
+
+SELECT 
+  'cagr' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(cagr IS NULL) as missing_rows, 
+  ROUND(COUNTIF(cagr IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.ZC_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'cagr_1' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(cagr_1 IS NULL) as missing_rows, 
+  ROUND(COUNTIF(cagr_1 IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.ZC_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'cagr_5' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(cagr_5 IS NULL) as missing_rows, 
+  ROUND(COUNTIF(cagr_5 IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.ZC_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'cagr_10' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(cagr_10 IS NULL) as missing_rows, 
+  ROUND(COUNTIF(cagr_10 IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.ZC_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'returns_1' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(returns_1 IS NULL) as missing_rows, 
+  ROUND(COUNTIF(returns_1 IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.ZC_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'returns_5' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(returns_5 IS NULL) as missing_rows, 
+  ROUND(COUNTIF(returns_5 IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.ZC_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'returns_10' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(returns_10 IS NULL) as missing_rows, 
+  ROUND(COUNTIF(returns_10 IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.ZC_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'beta' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(beta IS NULL) as missing_rows, 
+  ROUND(COUNTIF(beta IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.ZC_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'sharpe' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(sharpe IS NULL) as missing_rows, 
+  ROUND(COUNTIF(sharpe IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.ZC_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'm2' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(m2 IS NULL) as missing_rows, 
+  ROUND(COUNTIF(m2 IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.ZC_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'returns_12mo_f' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(returns_12mo_f IS NULL) as missing_rows, 
+  ROUND(COUNTIF(returns_12mo_f IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.ZC_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'returns_24mo_f' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(returns_24mo_f IS NULL) as missing_rows, 
+  ROUND(COUNTIF(returns_24mo_f IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.ZC_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'returns_36mo_f' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(returns_36mo_f IS NULL) as missing_rows, 
+  ROUND(COUNTIF(returns_36mo_f IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.ZC_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'cagr_12mo_f' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(cagr_12mo_f IS NULL) as missing_rows, 
+  ROUND(COUNTIF(cagr_12mo_f IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.ZC_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'cagr_24mo_f' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(cagr_24mo_f IS NULL) as missing_rows, 
+  ROUND(COUNTIF(cagr_24mo_f IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.ZC_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'cagr_36mo_f' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(cagr_36mo_f IS NULL) as missing_rows, 
+  ROUND(COUNTIF(cagr_36mo_f IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.ZC_TABLE)} 
+HAVING missing_percentage > 25 
+

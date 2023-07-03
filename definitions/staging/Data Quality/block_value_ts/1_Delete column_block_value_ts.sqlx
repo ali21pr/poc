@@ -1,0 +1,53 @@
+config {
+  type: "table",
+  schema: "dataform_staging",
+  name: "1_Delete column_block_value_ts.sqlx"
+}
+
+SELECT 
+  'block_id' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(block_id IS NULL) as missing_rows, 
+  ROUND(COUNTIF(block_id IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.BVT_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'property_type' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(property_type IS NULL) as missing_rows, 
+  ROUND(COUNTIF(property_type IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.BVT_TABLE)}
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'month' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(month IS NULL) as missing_rows, 
+  ROUND(COUNTIF(month IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.BVT_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'value_50' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(value_50 IS NULL) as missing_rows, 
+  ROUND(COUNTIF(value_50 IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.BVT_TABLE)}
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'value_sqft_50' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(value_sqft_50 IS NULL) as missing_rows, 
+  ROUND(COUNTIF(value_sqft_50 IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.BVT_TABLE)} 
+HAVING missing_percentage > 25 

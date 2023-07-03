@@ -1,0 +1,303 @@
+config {
+  type: "table",
+  schema: "dataform_staging",
+  name: "1_Delete column_block_value.sqlx"
+}
+
+SELECT 
+  'block_id' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(block_id IS NULL) as missing_rows, 
+  ROUND(COUNTIF(block_id IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.BV_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'fips' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(fips IS NULL) as missing_rows, 
+  ROUND(COUNTIF(fips IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'zip' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(zip IS NULL) as missing_rows, 
+  ROUND(COUNTIF(zip IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.BV_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'msa' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(msa IS NULL) as missing_rows, 
+  ROUND(COUNTIF(msa IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'state' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(state IS NULL) as missing_rows, 
+  ROUND(COUNTIF(state IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.BV_TABLE)} 
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT 
+  'lat' as columnname, 
+  COUNT(*) as total_rows, 
+  COUNTIF(lat IS NULL) as missing_rows, 
+  ROUND(COUNTIF(lat IS NULL)*100/COUNT(*),2) as missing_percentage 
+FROM ${ref(constants.BV_TABLE)}  
+HAVING missing_percentage > 25 
+
+UNION ALL
+
+SELECT
+   'lon' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(lon IS NULL) AS missing_rows,
+   ROUND(COUNTIF(lon IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'property_type' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(property_type IS NULL) AS missing_rows,
+   ROUND(COUNTIF(property_type IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_5' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_5 IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_5 IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_25' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_25 IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_25 IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_50' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_50 IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_50 IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_75' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_75 IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_75 IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_95' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_95 IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_95 IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_count' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_count IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_count IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_max' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_max IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_max IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_min' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_min IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_min IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_average' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_average IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_average IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_sd' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_sd IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_sd IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_sqft_5' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_sqft_5 IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_sqft_5 IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_sqft_25' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_sqft_25 IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_sqft_25 IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_sqft_50' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_sqft_50 IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_sqft_50 IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_sqft_75' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_sqft_75 IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_sqft_75 IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_sqft_95' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_sqft_95 IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_sqft_95 IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_sqft_count' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_sqft_count IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_sqft_count IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_sqft_max' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_sqft_max IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_sqft_max IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_sqft_min' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_sqft_min IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_sqft_min IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_sqft_average' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_sqft_average IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_sqft_average IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_sqft_sd' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_sqft_sd IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_sqft_sd IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_sqft_pctchg_1_yr' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_sqft_pctchg_1_yr IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_sqft_pctchg_1_yr IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25
+
+UNION ALL
+
+SELECT
+   'value_sqft_pctchg_5_yr' AS columnname,
+   COUNT(*) AS total_rows,
+   COUNTIF(value_sqft_pctchg_5_yr IS NULL) AS missing_rows,
+   ROUND(COUNTIF(value_sqft_pctchg_5_yr IS NULL)*100/COUNT(*),2) AS missing_percentage
+FROM ${ref(constants.BV_TABLE)}
+HAVING missing_percentage >25

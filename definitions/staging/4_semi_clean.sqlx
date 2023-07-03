@@ -1,0 +1,22 @@
+config {
+  type: "table",
+  schema: "dataform_staging",
+  name: "4_semi_clean"
+}
+SELECT
+  COALESCE(t.date, v.date_most_frequent) as date,
+  COALESCE(t.country, v.country_most_frequent) as country,
+  COALESCE(t.hospitalized_patients_symptoms, v.hospitalized_patients_symptoms_most_frequent) as hospitalized_patients_symptoms,
+  COALESCE(t.hospitalized_patients_intensive_care, v.hospitalized_patients_intensive_care_most_frequent) as hospitalized_patients_intensive_care,
+  COALESCE(t.total_hospitalized_patients, v.total_hospitalized_patients_most_frequent) as total_hospitalized_patients,
+  COALESCE(t.home_confinement_cases, v.home_confinement_cases_most_frequent) as home_confinement_cases,
+  COALESCE(t.total_current_confirmed_cases, v.total_current_confirmed_cases_most_frequent) as total_current_confirmed_cases,
+  COALESCE(t.new_current_confirmed_cases, v.new_current_confirmed_cases_most_frequent) as new_current_confirmed_cases,
+  COALESCE(t.new_total_confirmed_cases, v.new_total_confirmed_cases_most_frequent) as new_total_confirmed_cases,
+  COALESCE(t.recovered, v.recovered_most_frequent) as recovered,
+  COALESCE(t.deaths, v.deaths_most_frequent) as deaths,
+  COALESCE(t.total_confirmed_cases, v.total_confirmed_cases_most_frequent) as total_confirmed_cases,
+  COALESCE(t.tests_performed, v.tests_performed_most_frequent) as tests_performed,
+  -- Faire de même pour toutes les autres colonnes
+FROM kyr_sandbox_test_abo_bqd_my_dataset.2_semi_clean t
+CROSS JOIN ${ref('3_most_frequent_values')} v

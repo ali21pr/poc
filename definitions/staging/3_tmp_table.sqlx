@@ -1,0 +1,36 @@
+config {
+  type: "table",
+  schema: "dataform_staging",
+  name: "3_most_frequent_values"
+}
+
+SELECT
+  (SELECT date FROM (
+    SELECT date, COUNT(*) as count FROM dataform_staging.2_semi_clean WHERE date IS NOT NULL GROUP BY date ORDER BY count DESC LIMIT 1)) as date_most_frequent,
+  (SELECT country FROM (
+    SELECT country, COUNT(*) as count FROM dataform_staging.2_semi_clean WHERE country IS NOT NULL GROUP BY country ORDER BY count DESC LIMIT 1)) as country_most_frequent,
+  (SELECT hospitalized_patients_symptoms FROM (
+    SELECT hospitalized_patients_symptoms, COUNT(*) as count FROM dataform_staging.2_semi_clean WHERE hospitalized_patients_symptoms IS NOT NULL GROUP BY hospitalized_patients_symptoms ORDER BY count DESC LIMIT 1)) as hospitalized_patients_symptoms_most_frequent,
+  (SELECT hospitalized_patients_intensive_care FROM (
+    SELECT hospitalized_patients_intensive_care, COUNT(*) as count FROM dataform_staging.2_semi_clean WHERE hospitalized_patients_intensive_care IS NOT NULL GROUP BY hospitalized_patients_intensive_care ORDER BY count DESC LIMIT 1)) as hospitalized_patients_intensive_care_most_frequent,
+  (SELECT total_hospitalized_patients FROM (
+    SELECT total_hospitalized_patients, COUNT(*) as count FROM dataform_staging.2_semi_clean WHERE total_hospitalized_patients IS NOT NULL GROUP BY total_hospitalized_patients ORDER BY count DESC LIMIT 1)) as total_hospitalized_patients_most_frequent,
+  (SELECT home_confinement_cases FROM (
+    SELECT home_confinement_cases, COUNT(*) as count FROM dataform_staging.2_semi_clean WHERE home_confinement_cases IS NOT NULL GROUP BY home_confinement_cases ORDER BY count DESC LIMIT 1)) as home_confinement_cases_most_frequent,
+  (SELECT total_current_confirmed_cases FROM (
+    SELECT total_current_confirmed_cases, COUNT(*) as count FROM dataform_staging.2_semi_clean WHERE total_current_confirmed_cases IS NOT NULL GROUP BY total_current_confirmed_cases ORDER BY count DESC LIMIT 1)) as total_current_confirmed_cases_most_frequent,
+  (SELECT new_current_confirmed_cases FROM (
+    SELECT new_current_confirmed_cases, COUNT(*) as count FROM dataform_staging.2_semi_clean WHERE new_current_confirmed_cases IS NOT NULL GROUP BY new_current_confirmed_cases ORDER BY count DESC LIMIT 1)) as new_current_confirmed_cases_most_frequent,
+  (SELECT new_total_confirmed_cases FROM (
+    SELECT new_total_confirmed_cases, COUNT(*) as count FROM dataform_staging.2_semi_clean WHERE new_total_confirmed_cases IS NOT NULL GROUP BY new_total_confirmed_cases ORDER BY count DESC LIMIT 1)) as new_total_confirmed_cases_most_frequent,
+  (SELECT recovered FROM (
+    SELECT recovered, COUNT(*) as count FROM dataform_staging.2_semi_clean WHERE recovered IS NOT NULL GROUP BY recovered ORDER BY count DESC LIMIT 1)) as recovered_most_frequent,
+  (SELECT deaths FROM (
+    SELECT deaths, COUNT(*) as count FROM dataform_staging.2_semi_clean WHERE deaths IS NOT NULL GROUP BY deaths ORDER BY count DESC LIMIT 1)) as deaths_most_frequent,
+  (SELECT total_confirmed_cases FROM (
+    SELECT total_confirmed_cases, COUNT(*) as count FROM dataform_staging.2_semi_clean WHERE total_confirmed_cases IS NOT NULL GROUP BY total_confirmed_cases ORDER BY count DESC LIMIT 1)) as total_confirmed_cases_most_frequent,
+  (SELECT tests_performed FROM (
+    SELECT tests_performed, COUNT(*) as count FROM dataform_staging.2_semi_clean WHERE tests_performed IS NOT NULL GROUP BY tests_performed ORDER BY count DESC LIMIT 1)) as tests_performed_most_frequent,
+  
+  
+  -- Faire de même pour toutes les autres colonnes 
