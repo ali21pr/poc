@@ -1,0 +1,15 @@
+-- Requête pour calculer la croissance moyenne des valeurs de propriété dans chaque bloc au cours des 5 dernières années (value_pctchg_5_yr)
+-- Cette requête utilise la table block_value pour calculer la croissance 
+-- moyenne des valeurs de propriété dans chaque bloc au cours des 5 dernières 
+-- années. La fonction d'agrégation AVG est utilisée pour calculer la moyenne 
+-- de la colonne value_pctchg_5_yr et la clause GROUP BY est utilisée pour 
+-- regrouper les résultats par block_id.
+config {
+  type: "table",
+  schema: "dataform_reporting",
+  name: "3_modele"
+}
+
+SELECT block_id, AVG(CAST(REPLACE(value_pctchg_5_yr, ',', '.') AS FLOAT64)) AS avg_growth
+FROM ${ref('6_Clean_block_value')}
+GROUP BY block_id

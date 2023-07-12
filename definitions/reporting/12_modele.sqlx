@@ -1,0 +1,13 @@
+-- les 10 plus hauts niveaux de risque de baisse de la valeur de l'indice des prix des logements niveau national
+
+config {
+  type: "table",
+  schema: "dataform_reporting",
+  name: "12_modele"
+}
+
+SELECT month, risk
+FROM ${ref('6_Clean_national_ts')}
+WHERE risk IS NOT NULL
+ORDER BY risk DESC
+LIMIT 10

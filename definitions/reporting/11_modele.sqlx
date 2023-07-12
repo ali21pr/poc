@@ -1,0 +1,15 @@
+-- Analyse comparative du risque entre les différentes msa 
+
+config {
+  type: "table",
+  schema: "dataform_reporting",
+  name: "11_modele"
+}
+
+
+
+SELECT msa, month, risk
+FROM ${ref('6_Clean_msa_ts')}
+WHERE risk IS NOT NULL
+ORDER BY risk DESC
+LIMIT 10

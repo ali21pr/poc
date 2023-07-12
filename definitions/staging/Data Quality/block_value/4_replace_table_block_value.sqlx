@@ -1,0 +1,42 @@
+config {
+  type: "table",
+  schema: "dataform_staging",
+  name: "4_replace_table_block_value"
+}
+
+SELECT
+  COALESCE(t.block_id, v.block_id_most_frequent) as block_id,
+  COALESCE(t.fips, v.fips_most_frequent) as fips,
+  COALESCE(t.zip, v.zip_most_frequent) as zip,
+  COALESCE(t.msa, v.msa_most_frequent) as msa,
+  COALESCE(t.state, v.state_most_frequent) as state,
+  COALESCE(t.lat, v.lat_most_frequent) as lat,
+  COALESCE(t.lon, v.lon_most_frequent) as lon,
+  COALESCE(t.property_type, v.property_type_most_frequent) as property_type,
+  COALESCE(t.value_5, v.value_5_most_frequent) as value_5,
+  COALESCE(t.value_25, v.value_25_most_frequent) as value_25,
+  COALESCE(t.value_50, v.value_50_most_frequent) as value_50,
+  COALESCE(t.value_75, v.value_75_most_frequent) as value_75,
+  COALESCE(t.value_95, v.value_95_most_frequent) as value_95,
+  COALESCE(t.value_count, v.value_count_most_frequent) as value_count,
+  COALESCE(t.value_max, v.value_max_most_frequent) as value_max,
+  COALESCE(t.value_min, v.value_min_most_frequent) as value_min,
+  COALESCE(t.value_average, v.value_average_most_frequent) as value_average,
+  COALESCE(t.value_sd, v.value_sd_most_frequent) as value_sd,
+  COALESCE(t.value_pctchg_1_yr, v.value_pctchg_1_yr_most_frequent) as value_pctchg_1_yr,
+  COALESCE(t.value_pctchg_5_yr, v.value_pctchg_5_yr_most_frequent) as value_pctchg_5_yr,
+  COALESCE(t.value_sqft_5, v.value_sqft_5_most_frequent) as value_sqft_5,
+  COALESCE(t.value_sqft_25, v.value_sqft_25_most_frequent) as value_sqft_25,
+  COALESCE(t.value_sqft_50, v.value_sqft_50_most_frequent) as value_sqft_50,
+  COALESCE(t.value_sqft_75, v.value_sqft_75_most_frequent) as value_sqft_75,
+  COALESCE(t.value_sqft_95, v.value_sqft_95_most_frequent) as value_sqft_95,
+  COALESCE(t.value_sqft_count, v.value_sqft_count_most_frequent) as value_sqft_count,
+  COALESCE(t.value_sqft_max, v.value_sqft_max_most_frequent) as value_sqft_max,
+  COALESCE(t.value_sqft_min, v.value_sqft_min_most_frequent) as value_sqft_min,
+  COALESCE(t.value_sqft_average, v.value_sqft_average_most_frequent) as value_sqft_average,
+  COALESCE(t.value_sqft_sd, v.value_sqft_sd_most_frequent) as value_sqft_sd,
+  COALESCE(t.value_sqft_pctchg_1_yr, v.value_sqft_pctchg_1_yr_most_frequent) as value_sqft_pctchg_1_yr,
+  COALESCE(t.value_sqft_pctchg_5_yr, v.value_sqft_pctchg_5_yr_most_frequent) as value_sqft_pctchg_5_yr
+FROM dataform_staging.2_semi_clean_block_value t
+CROSS JOIN ${ref('3_most_frequent_values_block_value')} v
+

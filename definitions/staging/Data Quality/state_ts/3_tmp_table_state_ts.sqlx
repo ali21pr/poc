@@ -1,0 +1,33 @@
+config {
+  type: "table",
+  schema: "dataform_staging",
+  name: "3_most_frequent_values_state_ts"
+}
+
+SELECT
+  (SELECT state FROM (
+    SELECT state, COUNT(*) as count FROM dataform_staging.2_semi_clean_state_ts WHERE state IS NOT NULL GROUP BY state ORDER BY count DESC LIMIT 1)) as state_most_frequent,
+  (SELECT month FROM (
+    SELECT month, COUNT(*) as count FROM dataform_staging.2_semi_clean_state_ts WHERE month IS NOT NULL GROUP BY month ORDER BY count DESC LIMIT 1)) as month_most_frequent,
+  (SELECT hpi_value FROM (
+    SELECT hpi_value, COUNT(*) as count FROM dataform_staging.2_semi_clean_state_ts WHERE hpi_value IS NOT NULL GROUP BY hpi_value ORDER BY count DESC LIMIT 1)) as hpi_value_most_frequent,
+  (SELECT hpi_yoy_pct_chg FROM (
+    SELECT hpi_yoy_pct_chg, COUNT(*) as count FROM dataform_staging.2_semi_clean_state_ts WHERE hpi_yoy_pct_chg IS NOT NULL GROUP BY hpi_yoy_pct_chg ORDER BY count DESC LIMIT 1)) as hpi_yoy_pct_chg_most_frequent,
+  (SELECT hpi_distance FROM (
+    SELECT hpi_distance, COUNT(*) as count FROM dataform_staging.2_semi_clean_state_ts WHERE hpi_distance IS NOT NULL GROUP BY hpi_distance ORDER BY count DESC LIMIT 1)) as hpi_distance_most_frequent,
+  (SELECT hpi_returns FROM (
+    SELECT hpi_returns, COUNT(*) as count FROM dataform_staging.2_semi_clean_state_ts WHERE hpi_returns IS NOT NULL GROUP BY hpi_returns ORDER BY count DESC LIMIT 1)) as hpi_returns_most_frequent,
+  (SELECT hpi_real FROM (
+    SELECT hpi_real, COUNT(*) as count FROM dataform_staging.2_semi_clean_state_ts WHERE hpi_real IS NOT NULL GROUP BY hpi_real ORDER BY count DESC LIMIT 1)) as hpi_real_most_frequent,
+  (SELECT hpi_trend FROM (
+    SELECT hpi_trend, COUNT(*) as count FROM dataform_staging.2_semi_clean_state_ts WHERE hpi_trend IS NOT NULL GROUP BY hpi_trend ORDER BY count DESC LIMIT 1)) as hpi_trend_most_frequent,
+  (SELECT afford_detrended FROM (
+    SELECT afford_detrended, COUNT(*) as count FROM dataform_staging.2_semi_clean_state_ts WHERE afford_detrended IS NOT NULL GROUP BY afford_detrended ORDER BY count DESC LIMIT 1)) as afford_detrended_most_frequent,
+  (SELECT afford_pmt FROM (
+    SELECT afford_pmt, COUNT(*) as count FROM dataform_staging.2_semi_clean_state_ts WHERE afford_pmt IS NOT NULL GROUP BY afford_pmt ORDER BY count DESC LIMIT 1)) as afford_pmt_most_frequent,
+  (SELECT acceleration_value FROM (
+    SELECT acceleration_value, COUNT(*) as count FROM dataform_staging.2_semi_clean_state_ts WHERE acceleration_value IS NOT NULL GROUP BY acceleration_value ORDER BY count DESC LIMIT 1)) as acceleration_value_most_frequent,
+  (SELECT velocity_value FROM (
+    SELECT velocity_value, COUNT(*) as count FROM dataform_staging.2_semi_clean_state_ts WHERE velocity_value IS NOT NULL GROUP BY velocity_value ORDER BY count DESC LIMIT 1)) as velocity_value_most_frequent,
+  
+  

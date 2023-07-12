@@ -1,0 +1,22 @@
+config {
+  type: "table",
+  schema: "dataform_staging",
+  name: "4_replace_table_zip_ts"
+}
+
+SELECT
+  COALESCE(t.zip, v.zip_most_frequent) as zip,
+  COALESCE(t.msa, v.msa_most_frequent) as msa,
+  COALESCE(t.month, v.month_most_frequent) as month,
+  COALESCE(t.hpi_value, v.hpi_value_most_frequent) as hpi_value,
+  COALESCE(t.hpi_yoy_pct_chg, v.hpi_yoy_pct_chg_most_frequent) as hpi_yoy_pct_chg,
+  COALESCE(t.hpi_distance, v.hpi_distance_most_frequent) as hpi_distance,
+  COALESCE(t.hpi_returns, v.hpi_returns_most_frequent) as hpi_returns,
+  COALESCE(t.hpi_real, v.hpi_real_most_frequent) as hpi_real,
+  COALESCE(t.hpi_trend, v.hpi_trend_most_frequent) as hpi_trend,
+  COALESCE(t.afford_detrended, v.afford_detrended_most_frequent) as afford_detrended,
+  COALESCE(t.afford_pmt, v.afford_pmt_most_frequent) as afford_pmt,
+  COALESCE(t.acceleration_value, v.acceleration_value_most_frequent) as acceleration_value,
+  COALESCE(t.velocity_value, v.velocity_value_most_frequent) as velocity_value
+FROM dataform_staging.2_semi_clean_zip_ts t
+CROSS JOIN ${ref('3_most_frequent_values_zip_ts')} v

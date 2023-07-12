@@ -1,0 +1,72 @@
+config {
+  type: "table",
+  schema: "dataform_staging",
+  name: "3_most_frequent_values_block_value"
+}
+
+SELECT
+  (SELECT block_id FROM (
+    SELECT block_id, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE block_id IS NOT NULL GROUP BY block_id ORDER BY count DESC LIMIT 1)) as block_id_most_frequent,
+  (SELECT fips FROM (
+    SELECT fips, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE fips IS NOT NULL GROUP BY fips ORDER BY count DESC LIMIT 1)) as fips_most_frequent,
+  (SELECT zip FROM (
+    SELECT zip, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE zip IS NOT NULL GROUP BY zip ORDER BY count DESC LIMIT 1)) as zip_most_frequent,
+  (SELECT msa FROM (
+    SELECT msa, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE msa IS NOT NULL GROUP BY msa ORDER BY count DESC LIMIT 1)) as msa_most_frequent,
+  (SELECT state FROM (
+    SELECT state, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE state IS NOT NULL GROUP BY state ORDER BY count DESC LIMIT 1)) as state_most_frequent,
+  (SELECT lat FROM (
+    SELECT lat, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE lat IS NOT NULL GROUP BY lat ORDER BY count DESC LIMIT 1)) as lat_most_frequent,
+  (SELECT lon FROM (
+    SELECT lon, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE lon IS NOT NULL GROUP BY lon ORDER BY count DESC LIMIT 1)) as lon_most_frequent,
+  (SELECT property_type FROM (
+    SELECT property_type, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE property_type IS NOT NULL GROUP BY property_type ORDER BY count DESC LIMIT 1)) as property_type_most_frequent,
+  (SELECT value_5 FROM (
+    SELECT value_5, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_5 IS NOT NULL GROUP BY value_5 ORDER BY count DESC LIMIT 1)) as value_5_most_frequent,
+  (SELECT value_25 FROM (
+    SELECT value_25, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_25 IS NOT NULL GROUP BY value_25 ORDER BY count DESC LIMIT 1)) as value_25_most_frequent,
+  (SELECT value_50 FROM (
+    SELECT value_50, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_50 IS NOT NULL GROUP BY value_50 ORDER BY count DESC LIMIT 1)) as value_50_most_frequent,
+  (SELECT value_75 FROM (
+    SELECT value_75, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_75 IS NOT NULL GROUP BY value_75 ORDER BY count DESC LIMIT 1)) as value_75_most_frequent,
+  (SELECT value_95 FROM (
+    SELECT value_95, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_95 IS NOT NULL GROUP BY value_95 ORDER BY count DESC LIMIT 1)) as value_95_most_frequent,
+   (SELECT value_count FROM (
+    SELECT value_count, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_count IS NOT NULL GROUP BY value_count ORDER BY count DESC LIMIT 1)) as value_count_most_frequent,
+  (SELECT value_max FROM (
+    SELECT value_max, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_max IS NOT NULL GROUP BY value_max ORDER BY count DESC LIMIT 1)) as value_max_most_frequent,
+  (SELECT value_min FROM (
+    SELECT value_min, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_min IS NOT NULL GROUP BY value_min ORDER BY count DESC LIMIT 1)) as value_min_most_frequent,
+  (SELECT value_average FROM (
+    SELECT value_average, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_average IS NOT NULL GROUP BY value_average ORDER BY count DESC LIMIT 1)) as value_average_most_frequent,
+  (SELECT value_sd FROM (
+    SELECT value_sd, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_sd IS NOT NULL GROUP BY value_sd ORDER BY count DESC LIMIT 1)) as value_sd_most_frequent,
+  (SELECT value_pctchg_1_yr FROM (
+    SELECT value_pctchg_1_yr, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_pctchg_1_yr IS NOT NULL GROUP BY value_pctchg_1_yr ORDER BY count DESC LIMIT 1)) as value_pctchg_1_yr_most_frequent,
+  (SELECT value_pctchg_5_yr FROM (
+    SELECT value_pctchg_5_yr, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_pctchg_5_yr IS NOT NULL GROUP BY value_pctchg_5_yr ORDER BY count DESC LIMIT 1)) as value_pctchg_5_yr_most_frequent,
+  (SELECT value_sqft_5 FROM (
+    SELECT value_sqft_5, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_sqft_5 IS NOT NULL GROUP BY value_sqft_5 ORDER BY count DESC LIMIT 1)) as value_sqft_5_most_frequent,
+  (SELECT value_sqft_25 FROM (
+    SELECT value_sqft_25, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_sqft_25 IS NOT NULL GROUP BY value_sqft_25 ORDER BY count DESC LIMIT 1)) as value_sqft_25_most_frequent,
+  (SELECT value_sqft_50 FROM (
+    SELECT value_sqft_50, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_sqft_50 IS NOT NULL GROUP BY value_sqft_50 ORDER BY count DESC LIMIT 1)) as value_sqft_50_most_frequent,
+  (SELECT value_sqft_75 FROM (
+    SELECT value_sqft_75, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_sqft_75 IS NOT NULL GROUP BY value_sqft_75 ORDER BY count DESC LIMIT 1)) as value_sqft_75_most_frequent,
+  (SELECT value_sqft_95 FROM (
+    SELECT value_sqft_95, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_sqft_95 IS NOT NULL GROUP BY value_sqft_95 ORDER BY count DESC LIMIT 1)) as value_sqft_95_most_frequent,
+  (SELECT value_sqft_count FROM (
+    SELECT value_sqft_count, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_sqft_count IS NOT NULL GROUP BY value_sqft_count ORDER BY count DESC LIMIT 1)) as value_sqft_count_most_frequent,
+  (SELECT value_sqft_max FROM (
+    SELECT value_sqft_max, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_sqft_max IS NOT NULL GROUP BY value_sqft_max ORDER BY count DESC LIMIT 1)) as value_sqft_max_most_frequent,
+  (SELECT value_sqft_min FROM (
+    SELECT value_sqft_min, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_sqft_min IS NOT NULL GROUP BY value_sqft_min ORDER BY count DESC LIMIT 1)) as value_sqft_min_most_frequent,
+  (SELECT value_sqft_average FROM (
+    SELECT value_sqft_average, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_sqft_average IS NOT NULL GROUP BY value_sqft_average ORDER BY count DESC LIMIT 1)) as value_sqft_average_most_frequent,
+  (SELECT value_sqft_sd FROM (
+    SELECT value_sqft_sd, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_sqft_sd IS NOT NULL GROUP BY value_sqft_sd ORDER BY count DESC LIMIT 1)) as value_sqft_sd_most_frequent,
+  (SELECT value_sqft_pctchg_1_yr FROM (
+    SELECT value_sqft_pctchg_1_yr, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_sqft_pctchg_1_yr IS NOT NULL GROUP BY value_sqft_pctchg_1_yr ORDER BY count DESC LIMIT 1)) as value_sqft_pctchg_1_yr_most_frequent,
+  (SELECT value_sqft_pctchg_5_yr FROM (
+    SELECT value_sqft_pctchg_5_yr, COUNT(*) as count FROM dataform_staging.2_semi_clean_block_value WHERE value_sqft_pctchg_5_yr IS NOT NULL GROUP BY value_sqft_pctchg_5_yr ORDER BY count DESC LIMIT 1)) as value_sqft_pctchg_5_yr_most_frequent,
+  

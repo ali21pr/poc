@@ -1,0 +1,14 @@
+-- Afficher les valeurs de "risk" dans la table "msa_ts" au niveau des zones métropolitaines, et le "property_type" dans la table "block_value_ts" est "CND"
+
+config {
+  type: "table",
+  schema: "dataform_reporting",
+  name: "14_modele"
+}
+
+SELECT ${ref('6_Clean_block_value_ts')}.property_type, ${ref('6_Clean_msa_ts')}.msa, risk
+FROM ${ref('6_Clean_msa_ts')}
+JOIN ${ref('6_Clean_block_value')} ON ${ref('6_Clean_msa_ts')}.msa = ${ref('6_Clean_block_value')}.msa
+JOIN ${ref('6_Clean_block_value_ts')} ON ${ref('6_Clean_block_value')}.block_id = ${ref('6_Clean_block_value_ts')}.block_id
+WHERE ${ref('6_Clean_block_value_ts')}.property_type = 'CND'
+

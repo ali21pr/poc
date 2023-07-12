@@ -1,0 +1,14 @@
+-- percentile 75 des valeurs de location par pied carré dans chaque bloc
+-- Cette requête sélectionne le block_id et le percentile 75 des valeurs de 
+-- location par pied carré (value_sqft_75) dans la table block_rental_value.
+
+config {
+  type: "table",
+  schema: "dataform_reporting",
+  name: "5_modele"
+}
+
+
+
+SELECT br.block_id, br.value_sqft_75 AS rental_value_percentile_75
+FROM ${ref('6_Clean_Block_rental_value')} AS br

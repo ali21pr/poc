@@ -1,0 +1,13 @@
+-- la moyenne du champ "risk" pour chaque "property_type" dans la table "block_value_ts" par "msa"
+
+config {
+  type: "table",
+  schema: "dataform_reporting",
+  name: "13_modele"
+}
+
+SELECT bv.property_type, mt.msa, AVG(CAST(REPLACE(risk, ',', '.') AS FLOAT64)) AS avg_risk
+FROM ${ref('6_Clean_block_value')} AS bv
+JOIN ${ref('6_Clean_block_value_ts')} AS bvt ON bv.block_id = bvt.block_id
+JOIN ${ref('6_Clean_msa_ts')} AS mt ON bv.msa = mt.msa
+GROUP BY bv.property_type, mt.msa

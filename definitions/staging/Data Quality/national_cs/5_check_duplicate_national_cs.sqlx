@@ -1,0 +1,41 @@
+config {
+  type: "table",
+  schema: "dataform_staging",
+  name: "5_check_duplicate_national_cs"
+}
+
+SELECT cagr,
+cagr_1,
+cagr_5,
+cagr_10,
+returns_1,
+returns_5,
+returns_10,
+beta,
+sharpe,
+m2,
+returns_12mo_f,
+returns_24mo_f,
+returns_36mo_f,
+cagr_12mo_f,
+cagr_24mo_f,
+cagr_36mo_f,
+       COUNT(*) as count
+FROM ${ref('4_replace_table_national_cs')}
+GROUP BY cagr,
+cagr_1,
+cagr_5,
+cagr_10,
+returns_1,
+returns_5,
+returns_10,
+beta,
+sharpe,
+m2,
+returns_12mo_f,
+returns_24mo_f,
+returns_36mo_f,
+cagr_12mo_f,
+cagr_24mo_f,
+cagr_36mo_f
+HAVING count > 1

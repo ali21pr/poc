@@ -1,0 +1,14 @@
+-- Jointure des tables block_rental_value et block_value pour obtenir les valeurs de location et de valeur par pied carré moyennes pour chaque bloc
+
+config {
+  type: "table",
+  schema: "dataform_reporting",
+  name: "6_modele"
+}
+
+SELECT brv.block_id, brv.value_sqft_average AS rental_value_sqft_average, bv.value_sqft_average AS block_value_sqft_average
+FROM ${ref('6_Clean_Block_rental_value')} AS brv
+JOIN ${ref('6_Clean_block_value')} AS bv ON brv.block_id = bv.block_id
+
+
+

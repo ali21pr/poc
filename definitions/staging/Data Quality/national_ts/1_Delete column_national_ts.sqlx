@@ -1,7 +1,7 @@
 config {
   type: "table",
   schema: "dataform_staging",
-  name: "1_Delete column_national_ts.sqlx"
+  name: "1_Delete_column_national_ts"
 }
 
 

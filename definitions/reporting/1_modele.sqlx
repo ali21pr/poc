@@ -1,0 +1,13 @@
+--  Reuqete obtenir les codes ZIP avec les valeurs de volatilité (beta) les plus élevées.
+config {
+  type: "table",
+  schema: "dataform_reporting",
+  name: "1_modele"
+}
+
+SELECT zip, MAX(beta) AS max_beta
+FROM ${ref('6_Clean_zip_cs')}
+GROUP BY zip
+ORDER BY max_beta DESC
+LIMIT 10
+

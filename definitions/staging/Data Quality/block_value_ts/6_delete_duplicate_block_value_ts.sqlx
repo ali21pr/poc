@@ -1,0 +1,11 @@
+config {
+  type: "table",
+  schema: "dataform_staging",
+  name: "6_Clean_block_value_ts"
+}
+SELECT block_id, property_type, month, value_50, value_sqft_50
+FROM (
+  SELECT *, ROW_NUMBER() OVER(PARTITION BY block_id, property_type, month, value_50, value_sqft_50 ORDER BY block_id) AS row_number
+  FROM ${ref('4_replace_block_value_ts')}
+)
+WHERE row_number = 1

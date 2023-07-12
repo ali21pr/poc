@@ -1,0 +1,36 @@
+config {
+  type: "table",
+  schema: "dataform_staging",
+  name: "4_replace_table_zip_cs"
+}
+
+SELECT
+  COALESCE(t.zip, v.zip_most_frequent) as zip,
+  COALESCE(t.msa, v.msa_most_frequent) as msa,
+  COALESCE(t.state, v.state_most_frequent) as state,
+  COALESCE(t.cagr, v.cagr_most_frequent) as cagr,
+  COALESCE(t.cagr_zscore, v.cagr_zscore_most_frequent) as cagr_zscore,
+  COALESCE(t.cagr_1, v.cagr_1_most_frequent) as cagr_1,
+  COALESCE(t.cagr_1_zscore, v.cagr_1_zscore_most_frequent) as cagr_1_zscore,
+  COALESCE(t.cagr_5, v.cagr_5_most_frequent) as cagr_5,
+  COALESCE(t.cagr_5_zscore, v.cagr_5_zscore_most_frequent) as cagr_5_zscore,
+  COALESCE(t.cagr_10, v.cagr_10_most_frequent) as cagr_10,
+  COALESCE(t.cagr_10_zscore, v.cagr_10_zscore_most_frequent) as cagr_10_zscore,
+  COALESCE(t.returns_1, v.returns_1_most_frequent) as returns_1,
+  COALESCE(t.returns_5, v.returns_5_most_frequent) as returns_5,
+  COALESCE(t.returns_10, v.returns_10_most_frequent) as returns_10,
+  COALESCE(t.beta, v.beta_most_frequent) as beta,
+  COALESCE(t.beta_zscore, v.beta_zscore_most_frequent) as beta_zscore,
+  COALESCE(t.sharpe, v.sharpe_most_frequent) as sharpe,
+  COALESCE(t.sharpe_zscore, v.sharpe_zscore_most_frequent) as sharpe_zscore,
+  COALESCE(t.m2, v.m2_most_frequent) as m2,
+  COALESCE(t.m2_zscore, v.m2_zscore_most_frequent) as m2_zscore,
+  COALESCE(t.returns_12mo_f, v.returns_12mo_f_most_frequent) as returns_12mo_f,
+  COALESCE(t.returns_24mo_f, v.returns_24mo_f_most_frequent) as returns_24mo_f,
+  COALESCE(t.returns_36mo_f, v.returns_36mo_f_most_frequent) as returns_36mo_f,
+  COALESCE(t.cagr_12mo_f, v.cagr_12mo_f_most_frequent) as cagr_12mo_f,
+  COALESCE(t.cagr_24mo_f, v.cagr_24mo_f_most_frequent) as cagr_24mo_f,
+  COALESCE(t.cagr_36mo_f, v.cagr_36mo_f_most_frequent) as cagr_36mo_f
+FROM dataform_staging.2_semi_clean_zip_cs t
+CROSS JOIN ${ref('3_most_frequent_values_zip_cs')} v
+

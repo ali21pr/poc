@@ -1,0 +1,62 @@
+config {
+  type: "table",
+  schema: "dataform_staging",
+  name: "3_most_frequent_values_zip_cs"
+}
+
+
+SELECT
+  (SELECT msa FROM (
+    SELECT msa, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE msa IS NOT NULL GROUP BY msa ORDER BY count DESC LIMIT 1)) as msa_most_frequent,
+  (SELECT zip FROM (
+    SELECT zip, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE zip IS NOT NULL GROUP BY zip ORDER BY count DESC LIMIT 1)) as zip_most_frequent,
+  (SELECT state FROM (
+    SELECT state, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE state IS NOT NULL GROUP BY state ORDER BY count DESC LIMIT 1)) as state_most_frequent,
+  (SELECT cagr FROM (
+    SELECT cagr, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE cagr IS NOT NULL GROUP BY cagr ORDER BY count DESC LIMIT 1)) as cagr_most_frequent,
+  (SELECT cagr_zscore FROM (
+    SELECT cagr_zscore, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE cagr_zscore IS NOT NULL GROUP BY cagr_zscore ORDER BY count DESC LIMIT 1)) as cagr_zscore_most_frequent,
+  (SELECT cagr_1 FROM (
+    SELECT cagr_1, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE cagr_1 IS NOT NULL GROUP BY cagr_1 ORDER BY count DESC LIMIT 1)) as cagr_1_most_frequent,
+  (SELECT cagr_1_zscore FROM (
+    SELECT cagr_1_zscore, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE cagr_1_zscore IS NOT NULL GROUP BY cagr_1_zscore ORDER BY count DESC LIMIT 1)) as cagr_1_zscore_most_frequent,
+  (SELECT cagr_5 FROM (
+    SELECT cagr_5, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE cagr_5 IS NOT NULL GROUP BY cagr_5 ORDER BY count DESC LIMIT 1)) as cagr_5_most_frequent,
+  (SELECT cagr_5_zscore FROM (
+    SELECT cagr_5_zscore, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE cagr_5_zscore IS NOT NULL GROUP BY cagr_5_zscore ORDER BY count DESC LIMIT 1)) as cagr_5_zscore_most_frequent,
+  (SELECT cagr_10 FROM (
+    SELECT cagr_10, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE cagr_10 IS NOT NULL GROUP BY cagr_10 ORDER BY count DESC LIMIT 1)) as cagr_10_most_frequent,
+    (SELECT cagr_10_zscore FROM (
+    SELECT cagr_10_zscore, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE cagr_10_zscore IS NOT NULL GROUP BY cagr_10_zscore ORDER BY count DESC LIMIT 1)) as cagr_10_zscore_most_frequent,
+  (SELECT returns_1 FROM (
+    SELECT returns_1, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE returns_1 IS NOT NULL GROUP BY returns_1 ORDER BY count DESC LIMIT 1)) as returns_1_most_frequent,
+  (SELECT returns_5 FROM (
+    SELECT returns_5, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE returns_5 IS NOT NULL GROUP BY returns_5 ORDER BY count DESC LIMIT 1)) as returns_5_most_frequent,
+  (SELECT returns_10 FROM (
+    SELECT returns_10, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE returns_10 IS NOT NULL GROUP BY returns_10 ORDER BY count DESC LIMIT 1)) as returns_10_most_frequent,
+  (SELECT beta FROM (
+    SELECT beta, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE beta IS NOT NULL GROUP BY beta ORDER BY count DESC LIMIT 1)) as beta_most_frequent,
+  (SELECT beta_zscore FROM (
+    SELECT beta_zscore, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE beta_zscore IS NOT NULL GROUP BY beta_zscore ORDER BY count DESC LIMIT 1)) as beta_zscore_most_frequent,
+  (SELECT sharpe FROM (
+    SELECT sharpe, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE sharpe IS NOT NULL GROUP BY sharpe ORDER BY count DESC LIMIT 1)) as sharpe_most_frequent,
+  (SELECT sharpe_zscore FROM (
+    SELECT sharpe_zscore, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE sharpe_zscore IS NOT NULL GROUP BY sharpe_zscore ORDER BY count DESC LIMIT 1)) as sharpe_zscore_most_frequent,
+  (SELECT m2 FROM (
+    SELECT m2, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE m2 IS NOT NULL GROUP BY m2 ORDER BY count DESC LIMIT 1)) as m2_most_frequent,
+  (SELECT m2_zscore FROM (
+    SELECT m2_zscore, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE m2_zscore IS NOT NULL GROUP BY m2_zscore ORDER BY count DESC LIMIT 1)) as m2_zscore_most_frequent,
+  (SELECT returns_12mo_f FROM (
+    SELECT returns_12mo_f, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE returns_12mo_f IS NOT NULL GROUP BY returns_12mo_f ORDER BY count DESC LIMIT 1)) as returns_12mo_f_most_frequent,
+  (SELECT returns_24mo_f FROM (
+    SELECT returns_24mo_f, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE returns_24mo_f IS NOT NULL GROUP BY returns_24mo_f ORDER BY count DESC LIMIT 1)) as returns_24mo_f_most_frequent,
+  (SELECT returns_36mo_f FROM (
+    SELECT returns_36mo_f, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE returns_36mo_f IS NOT NULL GROUP BY returns_36mo_f ORDER BY count DESC LIMIT 1)) as returns_36mo_f_most_frequent,
+    (SELECT cagr_12mo_f FROM (
+    SELECT cagr_12mo_f, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE cagr_12mo_f IS NOT NULL GROUP BY cagr_12mo_f ORDER BY count DESC LIMIT 1)) as cagr_12mo_f_most_frequent,
+  (SELECT cagr_24mo_f FROM (
+    SELECT cagr_24mo_f, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE cagr_24mo_f IS NOT NULL GROUP BY cagr_24mo_f ORDER BY count DESC LIMIT 1)) as cagr_24mo_f_most_frequent,
+  (SELECT cagr_36mo_f FROM (
+    SELECT cagr_36mo_f, COUNT(*) as count FROM dataform_staging.2_semi_clean_zip_cs WHERE cagr_36mo_f IS NOT NULL GROUP BY cagr_36mo_f ORDER BY count DESC LIMIT 1)) as cagr_36mo_f_most_frequent
+  
+   

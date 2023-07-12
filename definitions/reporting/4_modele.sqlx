@@ -1,0 +1,12 @@
+-- nombre total de propriétés dans chaque bloc de location
+-- Cette requête sélectionne le block_id et le nombre total de propriétés 
+-- (value_count) dans la table block_rental_value.
+
+config {
+  type: "table",
+  schema: "dataform_reporting",
+  name: "4_modele"
+}
+
+SELECT br.block_id, br.value_count AS total_properties
+FROM ${ref('6_Clean_Block_rental_value')} AS br

@@ -1,0 +1,19 @@
+DECLARE columns STRING;
+DECLARE query STRING;
+
+-- Concatenate columns from trends table that are not in column_to_delete
+SET columns = (
+  SELECT STRING_AGG(column_name)
+  FROM (
+    SELECT column_name
+    FROM kyr-sandbox-test-abo.kyr_sandbox_test_abo_bqd_Dataset_dataform.INFORMATION_SCHEMA.COLUMNS
+    WHERE table_name='block_rental_value'
+    AND column_name NOT IN (SELECT columnname FROM dataform_staging.1_column_to_delete_block_rental_value)
+  )
+);
+
+-- Build the query
+SET query = CONCAT('CREATE OR REPLACE TABLE kyr-sandbox-test-abo.dataform_staging.2_semi_clean_Block_rental_value AS SELECT ', columns, ' FROM kyr-sandbox-test-abo.kyr_sandbox_test_abo_bqd_Dataset_dataform.block_rental_value');
+
+-- Execute the query
+EXECUTE IMMEDIATE query;

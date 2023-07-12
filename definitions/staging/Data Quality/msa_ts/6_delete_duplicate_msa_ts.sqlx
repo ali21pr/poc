@@ -1,0 +1,11 @@
+config {
+  type: "table",
+  schema: "dataform_staging",
+  name: "6_Clean_msa_ts"
+}
+SELECT msa, month, hpi_value, hpi_yoy_pct_chg, hpi_distance, hpi_returns, hpi_real, hpi_trend, afford_detrended, afford_pmt, acceleration_value, velocity_value, risk
+FROM (
+  SELECT *, ROW_NUMBER() OVER(PARTITION BY msa, month, hpi_value, hpi_yoy_pct_chg, hpi_distance, hpi_returns, hpi_real, hpi_trend, afford_detrended, afford_pmt, acceleration_value, velocity_value, risk ORDER BY msa) AS row_number
+  FROM ${ref('4_replace_table_msa_ts')}
+)
+WHERE row_number = 1

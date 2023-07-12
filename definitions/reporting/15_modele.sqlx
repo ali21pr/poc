@@ -1,0 +1,12 @@
+-- la moyenne du "risk" dans chaque code postal (zip)
+
+config {
+  type: "table",
+  schema: "dataform_reporting",
+  name: "15_modele"
+}
+
+SELECT ${ref('6_Clean_zip_cs')}.zip, AVG(CAST(REPLACE(${ref('6_Clean_msa_ts')}.risk, ',', '.') AS FLOAT64)) AS average_risk
+FROM ${ref('6_Clean_msa_ts')}
+JOIN ${ref('6_Clean_zip_cs')} ON ${ref('6_Clean_msa_ts')}.msa = ${ref('6_Clean_zip_cs')}.msa
+GROUP BY ${ref('6_Clean_zip_cs')}.zip

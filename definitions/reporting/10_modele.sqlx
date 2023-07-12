@@ -1,0 +1,13 @@
+-- Requête pour obtenir le nombre total de propriétés et le pourcentage de changement de valeur sur 1 an pour chaque bloc
+
+config {
+  type: "table",
+  schema: "dataform_reporting",
+  name: "10_modele"
+}
+
+SELECT brv.block_id, 
+       brv.value_count, 
+       bv.value_pctchg_1_yr
+FROM ${ref('6_Clean_Block_rental_value')} AS brv
+JOIN ${ref('6_Clean_block_value')} AS bv ON brv.block_id = bv.block_id

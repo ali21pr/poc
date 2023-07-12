@@ -1,0 +1,17 @@
+-- Requête pour obtenir le bloc avec la valeur de location par pied carré maximale 
+-- et la valeur de propriété maximale
+
+config {
+  type: "table",
+  schema: "dataform_reporting",
+  name: "9_modele"
+}
+
+SELECT brv.block_id, 
+       brv.value_sqft_max, 
+       bv.value_max
+FROM ${ref('6_Clean_Block_rental_value')} AS brv
+JOIN ${ref('6_Clean_block_value')} AS bv ON brv.block_id = bv.block_id
+WHERE brv.value_sqft_max = (SELECT MAX(value_sqft_max) FROM ${ref('6_Clean_Block_rental_value')})
+  AND bv.value_max = (SELECT MAX(value_max) FROM ${ref('6_Clean_block_value')})
+

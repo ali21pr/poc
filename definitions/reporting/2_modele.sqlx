@@ -1,0 +1,15 @@
+--  Requête pour obtenir les valeurs moyennes des prix de location par pied carré (value_sqft_average) pour chaque type de propriété (property_type) dans chaque bloc (block_id)
+config {
+  type: "table",
+  schema: "dataform_reporting",
+  name: "2_modele"
+}
+
+SELECT b.block_id, b.property_type, r.value_sqft_average
+FROM ${ref('6_Clean_block_value_ts')} AS b
+JOIN ${ref('6_Clean_Block_rental_value')}
+AS r ON b.block_id = r.block_id
+ORDER BY b.block_id, b.property_type
+
+
+

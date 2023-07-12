@@ -1,0 +1,12 @@
+-- Calcul du ratio de performance ajusté en fonction du risque (m2) moyen pour chaque MSA
+
+config {
+  type: "table",
+  schema: "dataform_reporting",
+  name: "7_modele"
+}
+
+SELECT msa, AVG(CAST(REPLACE(m2, ',', '.') AS FLOAT64)) AS average_m2
+FROM ${ref('6_Clean_msa_cs')}
+GROUP BY msa
+
