@@ -12,4 +12,3 @@ SELECT msa, month, risk
 FROM ${ref('6_Clean_msa_ts')}
 WHERE risk IS NOT NULL
 ORDER BY risk DESC
-LIMIT 10

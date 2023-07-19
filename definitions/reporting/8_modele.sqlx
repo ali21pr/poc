@@ -6,7 +6,6 @@ config {
   name: "8_modele"
 }
 
-SELECT state, hpi_value
+SELECT state, hpi_value, month
 FROM ${ref('6_Clean_state_ts')}
 WHERE month BETWEEN '01/12/1979' AND '01/12/1983'
-
