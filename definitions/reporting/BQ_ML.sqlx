@@ -1,0 +1,23 @@
+config {
+  type: "table",
+  schema: "dataform_reporting",
+  name: "BQ_ML"
+}
+
+SELECT
+    msa,
+    CAST(REPLACE(hpi_value, ',', '.') AS FLOAT64) as hpi_value,
+    CAST(REPLACE(hpi_yoy_pct_chg, ',', '.') AS FLOAT64) as hpi_yoy_pct_chg,
+    CAST(REPLACE(hpi_distance, ',', '.') AS FLOAT64) as hpi_distance,
+    CAST(REPLACE(hpi_returns, ',', '.') AS FLOAT64) as hpi_returns,
+    CAST(REPLACE(hpi_real, ',', '.') AS FLOAT64) as hpi_real,
+    CAST(REPLACE(hpi_trend, ',', '.') AS FLOAT64) as hpi_trend,
+    CAST(REPLACE(afford_detrended, ',', '.') AS FLOAT64) as afford_detrended,
+    CAST(REPLACE(afford_pmt, ',', '.') AS FLOAT64) as afford_pmt,
+    CAST(REPLACE(acceleration_value, ',', '.') AS FLOAT64) as acceleration_value,
+    CAST(REPLACE(velocity_value, ',', '.') AS FLOAT64) as velocity_value,
+    CAST(REPLACE(risk, ',', '.') AS FLOAT64) as risk,
+    EXTRACT(YEAR FROM PARSE_DATE('%d/%m/%Y', month)) as year,
+    EXTRACT(MONTH FROM PARSE_DATE('%d/%m/%Y', month)) as month
+FROM ${ref('6_Clean_msa_ts')}
+

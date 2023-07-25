@@ -1,0 +1,14 @@
+config {
+  type: "view",
+  schema: "dataform_reporting",
+  name: "risk_comparison"
+}
+
+SELECT 
+    year,
+    month,
+    AVG(true_risk) AS avg_true_risk,
+    AVG(predicted_risk) AS avg_predicted_risk
+FROM `kyr-sandbox-test-abo.dataform_reporting.predictions_risk`
+GROUP BY year, month
+ORDER BY year, month
