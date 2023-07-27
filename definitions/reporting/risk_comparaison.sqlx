@@ -9,6 +9,6 @@ SELECT
     month,
     AVG(true_risk) AS avg_true_risk,
     AVG(predicted_risk) AS avg_predicted_risk
-FROM `kyr-sandbox-test-abo.dataform_reporting.predictions_risk`
+FROM ${ref("predictions_risk")}
 GROUP BY year, month
 ORDER BY year, month

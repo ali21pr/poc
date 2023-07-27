@@ -17,3 +17,5 @@ SET query = CONCAT('CREATE OR REPLACE TABLE kyr-sandbox-test-abo.dataform_stagin
 
 -- Execute the query
 EXECUTE IMMEDIATE query;
+
+

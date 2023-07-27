@@ -4,11 +4,12 @@ config {
   schema: "dataform_reporting",
   name: "16_modele"
 }
+
 SELECT 
     CAST(EXTRACT(YEAR FROM PARSE_DATE('%m/%d/%Y', month)) / 10 AS INT64) * 10 AS decade,
     AVG(CAST(REPLACE(risk, ',', '.') AS FLOAT64)) as average_risk
 FROM 
-    dataform_staging.6_Clean_msa_ts
+    ${ref("6_Clean_msa_ts")}
 GROUP BY 
     decade
 ORDER BY 

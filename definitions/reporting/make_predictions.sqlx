@@ -38,4 +38,5 @@ FROM
         year,
         month
      FROM
-        `kyr-sandbox-test-abo.dataform_reporting.BQ_ML`))
+        ${ref("BQ_ML")}))
+
