@@ -3,7 +3,8 @@
 config {
   type: "table",
   schema: "dataform_reporting",
-  name: "15_modele"
+  name: "15_modele",
+  tags: "15_modele"
 }
 
 SELECT ${ref('6_Clean_zip_cs')}.zip, AVG(CAST(REPLACE(${ref('6_Clean_msa_ts')}.risk, ',', '.') AS FLOAT64)) AS average_risk

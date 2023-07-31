@@ -1,7 +1,8 @@
 config {
   type: "table",
   schema: "dataform_staging",
-  name: "5_check_duplicate_Block_rental_value"
+  name: "5_check_duplicate_Block_rental_value",
+  tags: "requete1_5"
 }
 
 SELECT block_id,

@@ -2,7 +2,8 @@
 config {
   type: "table",
   schema: "dataform_reporting",
-  name: "2_modele"
+  name: "2_modele",
+  tags: "2_modele"
 }
 
 SELECT b.block_id, b.property_type, r.value_sqft_average

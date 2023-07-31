@@ -5,7 +5,8 @@
 config {
   type: "table",
   schema: "dataform_reporting",
-  name: "5_modele"
+  name: "5_modele",
+  tags: "5_modele"
 }
 
 

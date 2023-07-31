@@ -3,7 +3,8 @@
 config {
   type: "table",
   schema: "dataform_reporting",
-  name: "8_modele"
+  name: "8_modele",
+  tags: "8_modele"
 }
 
 SELECT state, hpi_value, month

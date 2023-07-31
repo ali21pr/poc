@@ -3,7 +3,8 @@
 config {
   type: "table",
   schema: "dataform_reporting",
-  name: "14_modele"
+  name: "14_modele",
+  tags: "14_modele"
 }
 
 SELECT ${ref('6_Clean_block_value_ts')}.property_type, ${ref('6_Clean_msa_ts')}.msa, risk

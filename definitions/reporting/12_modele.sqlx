@@ -3,7 +3,8 @@
 config {
   type: "table",
   schema: "dataform_reporting",
-  name: "12_modele"
+  name: "12_modele",
+  tags: "12_modele"
 }
 
 SELECT month, risk

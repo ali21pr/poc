@@ -1,7 +1,8 @@
 config {
   type: "table",
   schema: "dataform_staging",
-  name: "1_Delete_column_state_ts"
+  name: "1_Delete_column_state_ts",
+  tags: "requete8_1"
 }
 
 SELECT

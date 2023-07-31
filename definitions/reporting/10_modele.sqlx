@@ -3,7 +3,8 @@
 config {
   type: "table",
   schema: "dataform_reporting",
-  name: "10_modele"
+  name: "10_modele",
+  tags: "10_modele"
 }
 
 SELECT brv.block_id, 

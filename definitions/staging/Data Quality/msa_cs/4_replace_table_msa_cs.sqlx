@@ -1,7 +1,8 @@
 config {
   type: "table",
   schema: "dataform_staging",
-  name: "4_replace_table_msa_cs"
+  name: "4_replace_table_msa_cs",
+  tags: "requete4_4"
 }
 
 SELECT

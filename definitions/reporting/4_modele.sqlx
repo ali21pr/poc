@@ -5,7 +5,8 @@
 config {
   type: "table",
   schema: "dataform_reporting",
-  name: "4_modele"
+  name: "4_modele",
+  tags: "4_modele"
 }
 
 SELECT br.block_id, br.value_count AS total_properties

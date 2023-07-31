@@ -1,7 +1,8 @@
 config {
   type: "table",
   schema: "dataform_staging",
-  name: "5_check_duplicate_msa_cs"
+  name: "5_check_duplicate_msa_cs",
+  tags: "requete4_5"
 }
 
 SELECT msa,

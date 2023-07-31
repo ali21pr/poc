@@ -1,7 +1,8 @@
 config {
   type: "table",
   schema: "dataform_reporting",
-  name: "predictions_risk"
+  name: "predictions_risk",
+  tags: "predictions_risk"
 }
 
 SELECT

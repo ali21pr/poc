@@ -1,7 +1,8 @@
 config {
   type: "table",
   schema: "dataform_staging",
-  name: "3_most_frequent_values_national_cs"
+  name: "3_most_frequent_values_national_cs",
+  tags: "requete6_3"
 }
 SELECT
   (SELECT cagr FROM (

@@ -1,7 +1,9 @@
 config {
   type: "table",
   schema: "dataform_staging",
-  name: "4_replace_table_block_value"
+  name: "4_replace_table_block_value",
+  tags: "requete2_4"
+
 }
 
 SELECT

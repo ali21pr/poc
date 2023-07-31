@@ -1,7 +1,8 @@
 config {
   type: "table",
   schema: "dataform_staging",
-  name: "3_most_frequent_values_msa_cs"
+  name: "3_most_frequent_values_msa_cs",
+  tags: "requete4_3"
 }
 
 SELECT

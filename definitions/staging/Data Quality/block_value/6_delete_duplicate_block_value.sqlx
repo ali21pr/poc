@@ -1,7 +1,8 @@
 config {
   type: "table",
   schema: "dataform_staging",
-  name: "6_Clean_block_value"
+  name: "6_Clean_block_value",
+  tags: "requete2_6"
 }
 SELECT block_id, fips, zip, msa, state, lat, lon, property_type, value_5, value_25, value_50, value_75, value_95, value_count, value_max, value_min, value_average, value_sd, value_pctchg_1_yr, value_pctchg_5_yr, value_sqft_5, value_sqft_25, value_sqft_50, value_sqft_75, value_sqft_95, value_sqft_count, value_sqft_max, value_sqft_min, value_sqft_average, value_sqft_sd, value_sqft_pctchg_1_yr, value_sqft_pctchg_5_yr
 FROM (

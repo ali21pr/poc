@@ -1,7 +1,8 @@
 config {
   type: "table",
   schema: "dataform_staging",
-  name: "5_check_duplicate_zip_cs"
+  name: "5_check_duplicate_zip_cs",
+  tags: "requete9_5"
 }
 
 SELECT 

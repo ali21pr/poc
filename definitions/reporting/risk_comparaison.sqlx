@@ -1,7 +1,8 @@
 config {
   type: "view",
   schema: "dataform_reporting",
-  name: "risk_comparison"
+  name: "risk_comparison",
+  tags: "risk_comparaiosn"
 }
 
 SELECT 

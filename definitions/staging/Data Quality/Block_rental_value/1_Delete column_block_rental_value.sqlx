@@ -1,9 +1,9 @@
 config {
   type: "table",
   schema: "dataform_staging",
-  name: "1_column_to_delete_block_rental_value"
+  name: "1_column_to_delete_block_rental_value",
+  tags: "requete1_1"
 }
-
 SELECT 
   'block_id' as columnname, 
   COUNT(*) as total_rows, 

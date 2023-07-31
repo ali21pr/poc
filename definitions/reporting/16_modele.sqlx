@@ -2,7 +2,8 @@
 config {
   type: "table",
   schema: "dataform_reporting",
-  name: "16_modele"
+  name: "16_modele",
+  tags: "16_modele"
 }
 
 SELECT 

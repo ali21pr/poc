@@ -3,7 +3,8 @@
 config {
   type: "table",
   schema: "dataform_reporting",
-  name: "11_modele"
+  name: "11_modele",
+  tags: "11_modele"
 }
 
 

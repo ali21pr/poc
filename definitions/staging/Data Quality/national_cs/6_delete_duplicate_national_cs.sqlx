@@ -1,7 +1,8 @@
 config {
   type: "table",
   schema: "dataform_staging",
-  name: "6_Clean_national_cs"
+  name: "6_Clean_national_cs",
+  tags: "requete6_6"
 }
 SELECT cagr, cagr_1, cagr_5, cagr_10, returns_1, returns_5, returns_10, beta, sharpe, m2, returns_12mo_f, returns_24mo_f, returns_36mo_f, cagr_12mo_f, cagr_24mo_f, cagr_36mo_f
 FROM (

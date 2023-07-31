@@ -1,7 +1,8 @@
 config {
   type: "table",
   schema: "dataform_staging",
-  name: "6_Clean_msa_cs"
+  name: "6_Clean_msa_cs",
+  tags: "requete4_6"
 }
 SELECT msa, name, state, cagr, cagr_zscore, cagr_1, cagr_1_zscore, cagr_5, cagr_5_zscore, cagr_10, cagr_10_zscore, returns_1, returns_5, returns_10, beta, beta_zscore, sharpe, sharpe_zscore, m2, m2_zscore, returns_12mo_f, returns_24mo_f, returns_36mo_f, cagr_12mo_f, cagr_24mo_f, cagr_36mo_f
 FROM (

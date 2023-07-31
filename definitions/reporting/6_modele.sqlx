@@ -3,7 +3,8 @@
 config {
   type: "table",
   schema: "dataform_reporting",
-  name: "6_modele"
+  name: "6_modele",
+  tags: "6_modele"
 }
 
 SELECT brv.block_id, brv.value_sqft_average AS rental_value_sqft_average, bv.value_sqft_average AS block_value_sqft_average

@@ -3,7 +3,8 @@
 config {
   type: "table",
   schema: "dataform_reporting",
-  name: "13_modele"
+  name: "13_modele",
+  tags: "13_modele"
 }
 
 SELECT bv.property_type, mt.msa, AVG(CAST(REPLACE(risk, ',', '.') AS FLOAT64)) AS avg_risk

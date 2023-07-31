@@ -1,3 +1,8 @@
+config {
+  tags: "requete2_2"
+}
+
+
 DECLARE columns STRING;
 DECLARE query STRING;
 
